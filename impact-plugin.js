@@ -58,8 +58,11 @@ ig.module(
 			var adapter
 			// if the adapter is passed in we try to load that only
 			if (options.adapter) {
-				adapter = ig.Lawnchair.adapters[ig.Lawnchair.adapters.indexOf(options.adapter)]
-				adapter = adapter.valid() ? adapter : undefined
+				for (var i = 0, l = ig.Lawnchair.adapters.length; i < l; i++) {
+					if (ig.Lawnchair.adapters[0].adapter === options.adapter) {
+						adapter = ig.Lawnchair.adapters[0];
+					}
+				}
 			// otherwise find the first valid adapter for this env        
 			} else {
 				for (var i = 0, l = ig.Lawnchair.adapters.length; i < l; i++) {
